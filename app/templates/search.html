@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}Libros clasificados{% endblock %}
+
+{% block content %}
+  <h2>Libros Clasificados</h2>
+  {% if resultados %}
+    <table border="1" cellpadding="8" cellspacing="0">
+      <tr>
+        <th>Título</th>
+        <th>Edad Sugerida</th>
+        <th>Palabras Detectadas</th>
+      </tr>
+      {% for libro in resultados %}
+        <tr>
+          <td>{{ libro.titulo }}</td>
+          <td>{{ libro.edadSugerida }}</td>
+          <td>{{ libro.palabrasDetectadas | join(', ') }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <p>No hay libros clasificados aún.</p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}Subir imagen{% endblock %}
+
+{% block content %}
+  <h2>Sube una imagen para analizar</h2>
+  <form action="/subir" method="post" enctype="multipart/form-data">
+    <label>Título del libro:</label><br>
+    <input type="text" name="titulo" required><br><br>
+    <label>Imagen:</label><br>
+    <input type="file" name="imagen" accept="image/*" required><br><br>
+    <button type="submit">Analizar</button>
+  </form>
+
+  {% if texto %}
+    <hr>
+    <h3>Resultado del análisis:</h3>
+    <p><strong>Edad sugerida:</strong> {{ edad }}</p>
+    <p><strong>Palabras detectadas:</strong> {{ palabras | join(', ') }}</p>
+    <pre>{{ texto }}</pre>
+  {% endif %}
+{% endblock %}
